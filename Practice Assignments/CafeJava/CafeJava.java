@@ -8,10 +8,10 @@ public class CafeJava {
         String displayTotalMessage = "Your total is $";
         
         // Menu variables (add yours below)
-        double mochaPrice = 3.5;
-        double dripCoffeePrice = 2.5;
-        double lattePrice = 4.5;
-        double cappuccinoPrice = 5.5;
+        double mochaPrice = 3.50;
+        double dripCoffeePrice = 2.50;
+        double lattePrice = 4.50;
+        double cappuccinoPrice = 5.50;
     
         // Customer name variables (add yours below)
         String customer1 = "Cindhuri";
@@ -29,5 +29,45 @@ public class CafeJava {
         // Example:
         System.out.println(generalGreeting + customer1); // Displays "Welcome to Cafe Java, Cindhuri"
     	// ** Your customer interaction print statements will go here ** //
+        if(isReadyOrder1){
+            System.out.println(customer1 + readyMessage + "." + " " + displayTotalMessage + cappuccinoPrice);
+            System.out.println();
+        }
+        else {
+            System.out.println(customer1 + pendingMessage);
+            System.out.println();
+        }
+
+        System.out.println(generalGreeting + customer4);
+        if(isReadyOrder4){
+            System.out.println(customer4 + readyMessage + "." + " " + displayTotalMessage + cappuccinoPrice);
+            System.out.println();
+        }
+        else {
+            System.out.println(customer4 + pendingMessage);
+            System.out.println();
+        }
+
+        System.out.println(generalGreeting + customer2);
+        if(isReadyOrder2){
+            System.out.println(customer2 + readyMessage + "." + " " + displayTotalMessage + (2*lattePrice));
+            System.out.println();
+        }
+        else {
+            System.out.println(customer2 + pendingMessage);
+            System.out.println();
+        }
+
+        System.out.println(generalGreeting + customer3);
+        if(isReadyOrder3){
+            System.out.println(customer3 + readyMessage + "." + " " + displayTotalMessage + dripCoffeePrice);
+            System.out.println();
+        }
+        else {
+            System.out.println(customer3 + pendingMessage);
+            System.out.println();
+        }
+        System.out.println("Our apologies for the mistake " + customer3);
+        System.out.println("The difference in price is $" + (lattePrice - dripCoffeePrice));
     }
 }
