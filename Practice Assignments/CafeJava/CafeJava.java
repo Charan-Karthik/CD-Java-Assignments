@@ -9,12 +9,21 @@ public class CafeJava {
         
         // Menu variables (add yours below)
         double mochaPrice = 3.5;
+        double dripCoffeePrice = 2.5;
+        double lattePrice = 4.5;
+        double cappuccinoPrice = 5.5;
     
         // Customer name variables (add yours below)
         String customer1 = "Cindhuri";
+        String customer2 = "Sam";
+        String customer3 = "Jimmy";
+        String customer4 = "Noah";
     
         // Order completions (add yours below)
         boolean isReadyOrder1 = false;
+        boolean isReadyOrder2 = true;
+        boolean isReadyOrder3 = false;
+        boolean isReadyOrder4 = true;
     
         // APP INTERACTION SIMULATION (Add your code for the challenges below)
         // Example:
