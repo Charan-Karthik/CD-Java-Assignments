@@ -1,3 +1,4 @@
+import java.util.Date;
 public class AlfredTest {
     /*
     * This main method will always be the launch point for a Java application
@@ -26,10 +27,14 @@ public class AlfredTest {
         System.out.println(testGreeting);
         
         // Uncomment these one at a time as you implement each method.
-        // System.out.println(testGuestGreeting);
-        // System.out.println(testDateAnnouncement);
-        // System.out.println(alexisTest);
-        // System.out.println(alfredTest);
-        // System.out.println(notRelevantTest);
+        System.out.println(testGuestGreeting);
+        System.out.println(testDateAnnouncement);
+        System.out.println(alexisTest);
+        System.out.println(alfredTest);
+        System.out.println(notRelevantTest);
+
+        // Date date = new Date();
+        // String overloadGreeting = alfredBot.basicGreeting("Mr. Wayne", date);
+        // System.out.println(overloadGreeting);
     }
 }

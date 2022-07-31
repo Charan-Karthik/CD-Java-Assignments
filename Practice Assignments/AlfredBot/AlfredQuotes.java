@@ -8,21 +8,35 @@ public class AlfredQuotes {
     
     public String guestGreeting(String name) {
         // YOUR CODE HERE
-        return "place holder for guest greeting return string";
+        return "Greetings " + name;
     }
     
     public String dateAnnouncement() {
         // YOUR CODE HERE
-        return "place holder for date announcement return string";
+        Date date = new Date();
+        return "It is currently " + date;
     }
     
     public String respondBeforeAlexis(String conversation) {
         // YOUR CODE HERE
-        return "for snarky response return string";
+        if(conversation.indexOf("Alexis")>-1){
+            return "And that's a look at Alexis' best use case.";
+        }
+
+        if(conversation.indexOf("Alfred")>-1){
+            return "Alfred is the best.";
+        }
+
+        return "I bought the bank.";
     }
     
 	// NINJA BONUS
-	// See the specs to overload the guessGreeting method
+	// See the specs to overload the guestGreeting method
+    // public String basicGreeting(String name, String date) {
+    //     // You do not need to code here, this is an example method
+    //     return String.format("Hi %s, it is currently %s", name, date);
+    // }
+
     // SENSEI BONUS
     // Write your own AlfredQuote method using any of the String methods you have learned!
 }
