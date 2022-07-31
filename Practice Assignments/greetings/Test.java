@@ -12,7 +12,8 @@ public class Test {
 	}
 }
 
-// Use PascalCase when working with Java (i.e. BankAccount instead of bankAccount or bank_account)
+// Use PascalCase when working with Java classes (i.e. BankAccount instead of bankAccount or bank_account)
+// camelCase is used for variable names (will touch on this later)
 
 // Compile with javac "FileName.java"
 // Compiling will create a .class file
