@@ -32,10 +32,9 @@ public class AlfredQuotes {
     
 	// NINJA BONUS
 	// See the specs to overload the guestGreeting method
-    // public String basicGreeting(String name, String date) {
-    //     // You do not need to code here, this is an example method
-    //     return String.format("Hi %s, it is currently %s", name, date);
-    // }
+    public String basicGreeting(String name, String name2) {
+        return String.format("Hi %s, %s at your service", name, name2);
+    }
 
     // SENSEI BONUS
     // Write your own AlfredQuote method using any of the String methods you have learned!
