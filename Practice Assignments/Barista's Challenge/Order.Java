@@ -12,7 +12,6 @@ public class Order {
     // No arguments, sets name to "Guest", initializes items as an empty list.
     public Order() {
         this.name = "Guest";
-        this.items = [];
     }
     
     // OVERLOADED CONSTRUCTOR
@@ -20,12 +19,29 @@ public class Order {
     // Initializes items as an empty list.
     public Order(String name){
         this.name = name;
-        this.items = [];
     }
     
     // ORDER METHODS
     	// Most of your code will go here, 
     	// so implement the getters and setters first!
+    public void addItem(Item item){
+        this.items.add(item);
+    }
+
+    public String getStatusMessage(){
+        if(this.ready == false){
+            return "Thank you for wairing. Your order will be ready soon.";
+        } else {
+            return "Your order is ready.";
+        }
+    }
+
+// CHANGE BELOW TO RETURN TYPE DOUBLE WHEN IT WORKS
+    public void getOrderTotal(){
+        ArrayList<Item> allItems = getOrderItems();
+        System.out.println(allItems);
+    }
+
     
     // GETTERS & SETTERS
     public String getOrderName(){
@@ -48,8 +64,8 @@ public class Order {
         this.ready = status;
     }
 
-    public void setOrderItems(ArrayList<Items> items){
-        this.items = items;
-    }
+    // public void setOrderItems(ArrayList<Items> items){
+    //     this.items = items;
+    // }
 }
 

@@ -21,10 +21,10 @@ public class Item {
     }
 
     // SETTERS
-    public void String setName(String name){
+    public void setName(String name){
         this.name = name;
     }
-    public void double setPrice(double price){
+    public void setPrice(double price){
         this.price = price;
     }
 }
