@@ -22,12 +22,15 @@ public class TestOrders {
         order1.addItem(item3);
         order1.addItem(item4);
         order1.addItem(item2);
+        order1.setOrderStatus(true);
 
         order2.addItem(item4);
         order2.addItem(item3);
+        order2.setOrderStatus(true);
 
         order3.addItem(item1);
         order3.addItem(item3);
+        order3.setOrderStatus(true);
 
         order4.addItem(item2);
         order4.addItem(item4);
@@ -37,5 +40,24 @@ public class TestOrders {
         order5.addItem(item2);
         order5.addItem(item3);
         order5.addItem(item4);
+
+    // Testing Methods
+        // System.out.println(order1.getOrderItems());
+        // order1.getOrderItems().forEach((item) -> System.out.println(item.getName()));
+
+        // System.out.println(order1.getOrderStatus());
+        // System.out.println(order5.getOrderStatus());
+
+        // System.out.println(order2.getOrderTotal());
+        
+        order1.display();
+        System.out.println("\n");
+        order2.display();
+        System.out.println("\n");
+        order3.display();
+        System.out.println("\n");
+        order4.display();
+        System.out.println("\n");
+        order5.display();
     }
 }

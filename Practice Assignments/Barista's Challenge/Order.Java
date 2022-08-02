@@ -28,22 +28,36 @@ public class Order {
         this.items.add(item);
     }
 
-    public String getStatusMessage(){
+    public void displayOrderItems(){
+        ArrayList<Item> allItems = getOrderItems();
+        allItems.forEach((item) -> System.out.println(item.getName() + " - " + "$" + item.getPrice()));
+    }
+
+    public void display(){
+        System.out.println("Customer Name:" + getOrderName());
+        displayOrderItems();
+        System.out.println("Total: $" + getOrderTotal());
+    }
+    
+    // GETTERS & SETTERS
+    public String getOrderStatus(){
         if(this.ready == false){
-            return "Thank you for wairing. Your order will be ready soon.";
+            return "Thank you for waiting. Your order will be ready soon.";
         } else {
             return "Your order is ready.";
         }
     }
 
-// CHANGE BELOW TO RETURN TYPE DOUBLE WHEN IT WORKS
-    public void getOrderTotal(){
+    public double getOrderTotal(){
+        double total = 0.0;
         ArrayList<Item> allItems = getOrderItems();
-        System.out.println(allItems);
+        // allItems.forEach((item) -> System.out.println(item.getPrice()));
+        for(int i=0; i<allItems.size(); i++){
+            total += allItems.get(i).getPrice();
+        }
+        return total;
     }
 
-    
-    // GETTERS & SETTERS
     public String getOrderName(){
         return this.name;
     }
@@ -64,8 +78,7 @@ public class Order {
         this.ready = status;
     }
 
-    // public void setOrderItems(ArrayList<Items> items){
-    //     this.items = items;
-    // }
+    public void setOrderItems(ArrayList<Item> items){
+        this.items = items;
+    }
 }
-
