@@ -3,6 +3,7 @@ public class Item {
     // MEMBER VARIABLES
     private String name;
     private double price;
+    private int index;
     
     // CONSTRUCTOR
     //   Takes a name and price as arguments 
@@ -19,6 +20,9 @@ public class Item {
     public double getPrice(){
         return this.price;
     }
+    public int getIndex(){
+        return this.index;
+    }
 
     // SETTERS
     public void setName(String name){
@@ -26,5 +30,8 @@ public class Item {
     }
     public void setPrice(double price){
         this.price = price;
+    }
+    public void setIndex(int index){
+        this.index = index;
     }
 }
