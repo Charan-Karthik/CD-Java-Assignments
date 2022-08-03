@@ -63,4 +63,22 @@ public class CoffeeKiosk{
     this.orders.add(newOrder);
     }
 
+    public void addMenuItemByInput(){
+        boolean adding = true;
+        while(adding){
+            System.out.println("Enter name of product to be added to menu");
+            String itemName = System.console().readLine();
+            
+            System.out.println("Enter the price for " + itemName);
+            String itemPrice = System.console().readLine();
+            double itemPriceAsDouble = Double.parseDouble(itemPrice);
+
+            addMenuItem(itemName, itemPriceAsDouble);
+            System.out.println("Would you like to continue adding menu items? (Enter: y/n)");
+            String continueAdding = System.console().readLine().toLowerCase();
+            if(continueAdding.equals("n")){
+                adding = false;
+            }
+        }
+    }
 }

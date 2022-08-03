@@ -11,6 +11,7 @@ public class TestOrders {
         kiosk1.addMenuItem("muffin", 4.00);
         // kiosk1.displayMenu();
 
+        kiosk1.addMenuItemByInput();
         kiosk1.newOrder();
     }
 }
