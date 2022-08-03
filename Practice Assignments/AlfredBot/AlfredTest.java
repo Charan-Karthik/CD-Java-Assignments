@@ -34,5 +34,7 @@ public class AlfredTest {
 
         String overloadGreeting = alfredBot.basicGreeting("Mr. Wayne", "Alfred");
         System.out.println(overloadGreeting);
+
+        System.out.println(alfredBot.shout("I will shout this!"));
     }
 }
