@@ -34,7 +34,7 @@ public class Order {
     }
 
     public void display(){
-        System.out.println("Customer Name:" + getOrderName());
+        System.out.println("Customer Name: " + getOrderName());
         displayOrderItems();
         System.out.println("Total: $" + getOrderTotal());
     }
