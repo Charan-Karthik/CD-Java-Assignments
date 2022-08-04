@@ -3,7 +3,6 @@
 import java.util.ArrayList;
 
 public class Deck {
-	
 	private ArrayList<Card> cards;
 	
     public Deck() {
@@ -13,6 +12,9 @@ public class Deck {
         for (String name : new String[] {"Hearts", "Clubs", "Diamonds", "Spades"}) {
             for (Integer rank = 1; rank <= 13; rank++) {
                 this.cards.add(new Card(name, rank));
+                if(this.cards.get(this.cards.size()-1)){
+                    
+                }
             }
         }
     }
