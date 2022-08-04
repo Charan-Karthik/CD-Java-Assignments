@@ -32,7 +32,7 @@ public class Card {
 		String cardName = this.name + " of " + this.suit;
         // System.out.printf("%s of %s\n", this.name, this.suit);
 		return cardName;
-    }
+    } 
 
 
 	public String getSuit() {
