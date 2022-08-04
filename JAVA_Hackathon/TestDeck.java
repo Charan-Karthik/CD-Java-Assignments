@@ -65,7 +65,7 @@ public class TestDeck {
 		System.out.println("Your points: " + points);
 		System.out.println("");
 
-		myDeck.getCards().remove(random1);
+		myDeck.getCards().remove(random2);
 		deckSize = myDeck.getCards().size();
 		// System.out.println(deckSize);
 
@@ -104,10 +104,12 @@ int dealer2 = random.nextInt(deckSize);
 			System.out.println("Would you like another card? (y/n)");
 			String response = System.console().readLine();
 			System.out.println("");
+			
 			if(response.equals("n")){
 				isPlaying = false;
 				System.out.println("Your points: " + points);
-				System.out.println("Dealer points: " + dealer);
+				System.out.println("Dealer points before drawing: " + dealer);
+				System.out.println("");
 
 // While loop for dealer
 				int dealerNumber = 0;
@@ -116,6 +118,7 @@ int dealer2 = random.nextInt(deckSize);
 					dealerNumber = random.nextInt(deckSize);
 					dealerCard = myDeck.getCards().get(dealerNumber);
 					System.out.println("Dealer draws "+ dealerCard.getName() + " of " + dealerCard.getSuit());
+					System.out.println("");
 					if(dealerCard.getRank() > 10){
 						dealer += 10;
 					} else {
@@ -124,14 +127,16 @@ int dealer2 = random.nextInt(deckSize);
 					myDeck.getCards().remove(dealerCard);
 					deckSize = myDeck.getCards().size();
 					// System.out.println(deckSize);
-					System.out.println("Dealer points: " + dealer);
+					System.out.println("Dealer points after drawing: " + dealer);
 				}
 				
 				if(dealer > points && dealer < 22){
 					System.out.println("You lose!");
+				} else if(dealer == points) {
+					System.out.println("Draw");
 				} else {
 					System.out.println("You win!");
-		}
+				}
 				break;
 			} else {
 				randomNumber = random.nextInt(deckSize);
