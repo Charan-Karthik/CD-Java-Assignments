@@ -5,27 +5,21 @@ import java.util.Random;
 public class TestDeck {
 
 	public static void main(String[] args) {
-		
-		// HashMap<String, Integer> hashDeck = new HashMap<String, Integer>();
 		Random random = new Random();
-
 		Deck myDeck = new Deck();
-		// for (Card card: myDeck.getCards()) {
-			// hashDeck.put(card.showCard(), 1);
-			// System.out.println(card.showCard());
-		// }
-		// System.out.println(myDeck.getCards());
-		// System.out.println(myDeck.getCards().size());
 
 		int deckSize = myDeck.getCards().size();
+// Test to make sure deck size is 52
 		// System.out.println(deckSize);
 		
+		
 		int points = 0;
+		int dealer = 0;
 
-// Generating Random Card
+
+// Player Random Card #1
 		int random1 = random.nextInt(deckSize);
 		Card randomCard1 = myDeck.getCards().get(random1);
-		// System.out.println(randomCard1);
 		String randomCard1String = randomCard1.getName() + " of " + randomCard1.getSuit();
 
 		System.out.println(randomCard1String);
@@ -39,6 +33,24 @@ public class TestDeck {
 		myDeck.getCards().remove(random1);
 		deckSize = myDeck.getCards().size();
 
+
+// Dealer Random Card #1
+		int dealer1 = random.nextInt(deckSize);
+		Card dealerCard1 = myDeck.getCards().get(dealer1);
+		String dealerCard1String = dealerCard1.getName() + " of " + dealerCard1.getSuit();
+
+		System.out.println("Dealer has drawn: " + dealerCard1String);
+		if(dealerCard1.getRank() > 10){
+			dealer += 10;
+		} else {
+			dealer += dealerCard1.getRank();
+		}
+
+		myDeck.getCards().remove(dealer1);
+		deckSize = myDeck.getCards().size();
+
+
+// Player Random Card #2
 		int random2 = random.nextInt(deckSize);
 		Card randomCard2 = myDeck.getCards().get(random2);
 		String randomCard2String = randomCard2.getName() + " of " + randomCard2.getSuit();
@@ -53,6 +65,24 @@ public class TestDeck {
 		myDeck.getCards().remove(random1);
 		deckSize = myDeck.getCards().size();
 
+
+// Dealer Random Card #2
+int dealer2 = random.nextInt(deckSize);
+		Card dealerCard2 = myDeck.getCards().get(dealer2);
+		String dealerCard2String = dealerCard2.getName() + " of " + dealerCard2.getSuit();
+
+		// System.out.println(dealerCard2String);
+		if(dealerCard2.getRank() > 10){
+			dealer += 10;
+		} else {
+			dealer += dealerCard2.getRank();
+		}
+
+		myDeck.getCards().remove(dealer2);
+		deckSize = myDeck.getCards().size();
+
+
+// Player decides whether or not to continue
 		int randomNumber = 0;
 		Card randomCard;
 
@@ -70,6 +100,29 @@ public class TestDeck {
 			if(response.equals("n")){
 				isPlaying = false;
 				System.out.println("Your points: " + points);
+				System.out.println("Dealer points: " + dealer);
+
+// While loop for dealer
+				int dealerNumber = 0;
+				Card dealerCard;
+				while(dealer < 15) {
+					dealerNumber = random.nextInt(deckSize);
+					dealerCard = myDeck.getCards().get(deckSize);
+					System.out.println("Dealer draws "+ dealerCard.getName() + " of " + dealerCard.getSuit());
+					if(dealerCard.getRank() > 10){
+						dealer += 10;
+					} else {
+						dealer += dealerCard.getRank();
+					}
+					myDeck.getCards().remove(dealerCard);
+					deckSize = myDeck.getCards().size();
+				}
+				
+				if(dealer > points && dealer < 22){
+					System.out.println("You lose!");
+				} else {
+					System.out.println("You win!");
+		}
 				break;
 			} else {
 				randomNumber = random.nextInt(deckSize);
@@ -83,6 +136,5 @@ public class TestDeck {
 				System.out.println("Points: " + points);
 			}
 		}
-		
 	}
 }
