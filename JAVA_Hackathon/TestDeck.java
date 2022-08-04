@@ -18,6 +18,7 @@ public class TestDeck {
 		// System.out.println(myDeck.getCards().size());
 
 		int deckSize = myDeck.getCards().size();
+		// System.out.println(deckSize);
 		
 		int points = 0;
 
@@ -28,9 +29,13 @@ public class TestDeck {
 		String randomCard1String = randomCard1.getName() + " of " + randomCard1.getSuit();
 
 		System.out.println(randomCard1String);
-		points += randomCard1.getRank();
+		if(randomCard1.getRank() > 10){
+			points += 10;
+		} else {
+			points += randomCard1.getRank();
+		}
+		System.out.println("Points: " + points);
 
-		// System.out.println(points);
 		myDeck.getCards().remove(random1);
 		deckSize = myDeck.getCards().size();
 
@@ -38,9 +43,13 @@ public class TestDeck {
 		Card randomCard2 = myDeck.getCards().get(random2);
 		String randomCard2String = randomCard2.getName() + " of " + randomCard2.getSuit();
 		System.out.println(randomCard2String);
-		points += randomCard2.getRank();
+		if(randomCard2.getRank() > 10){
+			points += 10;
+		} else {
+			points += randomCard2.getRank();
+		}
+		System.out.println("Points: " + points);
 
-		// System.out.println(points);
 		myDeck.getCards().remove(random1);
 		deckSize = myDeck.getCards().size();
 
@@ -51,6 +60,9 @@ public class TestDeck {
 		while(isPlaying){
 			if(points > 21){
 				System.out.println("You lost!");
+				break;
+			} else if(points == 21) {
+				System.out.println("You win!");
 				break;
 			}
 			System.out.println("Would you like another card? (y/n)");
@@ -63,7 +75,12 @@ public class TestDeck {
 				randomNumber = random.nextInt(deckSize);
 				randomCard = myDeck.getCards().get(randomNumber);
 				System.out.println(randomCard.getName() + " of " + randomCard.getSuit());
-				points += randomCard.getRank();
+				if(randomCard.getRank() > 10){
+					points += 10;
+				} else {
+					points += randomCard.getRank();
+				}
+				System.out.println("Points: " + points);
 			}
 		}
 		
