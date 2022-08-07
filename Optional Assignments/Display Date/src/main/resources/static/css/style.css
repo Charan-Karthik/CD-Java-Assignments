@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+body {
+	padding: 0;
+	margin: 0;
+}
+
+.mainContainer{
+	display: flex;
+	
+}
+
+.container1{
+	height: 100vh;
+	width: 50%;
+/* 	background-color: red; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.container2{
+	height: 100vh;
+	width: 50%;
+/* 	background-color: blue; */
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+#dateColor{
+	color:blue;
+	font-size: 3em;
+}
+
+#timeColor{
+	color:green;
+	font-size: 3em;
+}
+
+.wholeContainer{
+	height: 100vh;
+	width:100%;
+	display:flex;
+	justify-content: center;
+	align-items:center;
+}
+
+
