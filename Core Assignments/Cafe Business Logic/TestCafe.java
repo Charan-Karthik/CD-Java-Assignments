@@ -37,13 +37,16 @@ public class TestCafe {
         menu.add("latte");
         menu.add("mocha");
         cafeMethods.displayMenu(menu);
-    
-        System.out.println("\n----- Add Customer Test-----");
-        ArrayList<String> customers = new ArrayList<String>();
-        // --- Test 4 times ---
-        for (int i = 0; i < 4; i++) {
-            cafeMethods.addCustomer(customers);
-            System.out.println("\n");
-        }
+
+        // System.out.println("\n----- Add Customer Test-----");
+        // ArrayList<String> customers = new ArrayList<String>();
+        // // --- Test 4 times ---
+        // for (int i = 0; i < 4; i++) {
+        //     cafeMethods.addCustomer(customers);
+        //     System.out.println("\n");
+        // }
+
+        System.out.println("\n----- Price Chart Test-----");
+        cafeMethods.printPriceChart("mocha", 2.5, 4);
     }
 } 
