@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.text.NumberFormat;
 
 public class BankAccount {
     private String accountNumber;
@@ -32,6 +33,7 @@ public class BankAccount {
     public double depositToChecking(double depositAmount){
         this.checkingBalance += depositAmount;
         this.totalBalance += depositAmount;
+
         return checkingBalance;
     }
 
@@ -43,29 +45,46 @@ public class BankAccount {
 
     public String withdrawFromChecking(double withdrawAmount){
         if(this.checkingBalance < withdrawAmount){
-            return "Insufficient Balance";
+            return "Insufficient Balance in Checking Account";
         } else {
             this.checkingBalance -= withdrawAmount;
             this.totalBalance -= withdrawAmount;
-            return "New Balance: " + checkingBalance;
+
+            NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
+            String checkingAmount = currencyFormat.format(this.checkingBalance);
+
+            return "New Checking Account Balance: " + checkingAmount;
         }
     }
 
     public String withdrawFromSavings(double withdrawAmount){
         if(this.savingsBalance < withdrawAmount){
-            return "Insufficient Balance";
+            return "Insufficient Balance in Savings Account";
         } else {
             this.savingsBalance -= withdrawAmount;
             this.totalBalance -= withdrawAmount;
-            return "New Balance: " + savingsBalance;
+
+            NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
+            String savingsAmount = currencyFormat.format(this.savingsBalance);
+
+            return "New Savings Account Balance: " + savingsAmount;
         }
     }
 
     public void displayAccountInfo(){
+        NumberFormat currencyFormat = NumberFormat.getCurrencyInstance();
+
         System.out.println("Account Number: " + this.getAccountNumber());
-        System.out.println("Checking: " + this.getCheckingBalance());
-        System.out.println("Savings: " + this.getSavingsBalance());
-        System.out.println("Total: " + this.getTotalBalance());
+
+        String checkingAmount = currencyFormat.format(this.checkingBalance);
+        System.out.println("Checking: " + checkingAmount);
+
+        String savingsAmount = currencyFormat.format(this.savingsBalance);
+        System.out.println("Savings: " + savingsAmount);
+
+        String totalAmount = currencyFormat.format(this.totalBalance);
+        System.out.println("Total: " + totalAmount);
+
     }
 
     public double getCheckingBalance(){
