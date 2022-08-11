@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 
 import com.charan.savetravels.models.Expense;
 import com.charan.savetravels.services.ExpenseService;
@@ -72,7 +73,7 @@ public class MainController {
 		}
 	}
 	
-	@GetMapping("/delete/{id}")
+	@PostMapping("/delete/{id}")
 	public String delete(@PathVariable("id") Long id) {
 		Expense thisExpense = expenseService.findExpense(id);
 //		System.out.println(thisExpense);

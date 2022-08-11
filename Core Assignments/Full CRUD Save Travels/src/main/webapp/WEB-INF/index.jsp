@@ -2,8 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page isErrorPage="true" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page isErrorPage="true"%>
 
 <!DOCTYPE html>
 <html>
@@ -27,53 +27,71 @@
 				<th><b>Amount</b></th>
 				<th><b>Actions</b></th>
 			</tr>
-			
+
 			<c:forEach items="${expenses}" var="expense">
 				<tr>
-					<td><a href="/expense/${expense.id}"><c:out value="${expense.expenseName}"/></a></td>
-					<td><c:out value="${expense.vendor}"/></td>
-					<fmt:formatNumber var="formattedAmount" type="number" minFractionDigits= "2" maxFractionDigits="2" value="${expense.amount}"/>
-					<td>$<c:out value="${formattedAmount}"/></td>
-					<td><a href="/expenses/edit/${expense.id}">Edit</a> | <a href="/delete/${expense.id}" class="btn btn-danger btn-sm">Delete</a></td>
+					<td><a href="/expense/${expense.id}"><c:out
+								value="${expense.expenseName}" /></a></td>
+					<td><c:out value="${expense.vendor}" /></td>
+					<fmt:formatNumber var="formattedAmount" type="number"
+						minFractionDigits="2" maxFractionDigits="2"
+						value="${expense.amount}" />
+					<td>$<c:out value="${formattedAmount}" /></td>
+					<td class="d-flex justify-content-center"><a href="/expenses/edit/${expense.id}">Edit</a>
+						<form action="/delete/${expense.id}" method="post">
+							    <input type="hidden" name="_method" value="delete">
+							    <input type="submit" value="Delete" class="btn btn-sm btn-danger">
+						</form> 
+						<%-- <a href="/delete/${expense.id}" class="btn btn-danger btn-sm">Delete</a></td> --%>
 				</tr>
 			</c:forEach>
 		</table>
-		
-		<hr/>
-		
+
+		<hr />
+
 		<h1 class="text-center text-primary">Add an Expense</h1>
-		<form:form action="/expenses" method="POST" modelAttribute="expense" class="mx-auto w-50">
-			
+		<form:form action="/expenses" method="POST" modelAttribute="expense"
+			class="mx-auto w-50">
+
 			<div class="text-danger text-center">
-				<form:errors path="*"/>
+				<form:errors path="*" />
 			</div>
-			
-			
+
+
 			<p class="mx-auto">
-				<form:label path="expenseName" class="form-label"><b>Expense Name</b></form:label>
-<%-- 				<form:errors path="expenseName" class="text-danger"/> --%>
+				<form:label path="expenseName" class="form-label">
+					<b>Expense Name</b>
+				</form:label>
+				<%-- 				<form:errors path="expenseName" class="text-danger"/> --%>
 				<form:input path="expenseName" class="form-control" />
 			</p>
-			
+
 			<p class="mx-auto">
-				<form:label path="vendor" class="form-label"><b>Vendor</b></form:label>
-<%-- 				<form:errors path="vendor" class="text-danger"/> --%>
+				<form:label path="vendor" class="form-label">
+					<b>Vendor</b>
+				</form:label>
+				<%-- 				<form:errors path="vendor" class="text-danger"/> --%>
 				<form:input path="vendor" class="form-control" />
 			</p>
-			
+
 			<p class="mx-auto">
-				<form:label path="amount" class="form-label"><b>Amount ($)</b></form:label>
-<%-- 				<form:errors path="amount" class="text-danger"/> --%>
-				<form:input type="double" path="amount" class="form-control"/>
+				<form:label path="amount" class="form-label">
+					<b>Amount ($)</b>
+				</form:label>
+				<%-- 				<form:errors path="amount" class="text-danger"/> --%>
+				<form:input type="double" path="amount" class="form-control" />
 			</p>
-			
+
 			<p class="mx-auto">
-				<form:label path="description" class="form-label"><b>Description</b></form:label>
-<%-- 				<form:errors path="description" class="text-danger"/> --%>
+				<form:label path="description" class="form-label">
+					<b>Description</b>
+				</form:label>
+				<%-- 				<form:errors path="description" class="text-danger"/> --%>
 				<form:textarea path="description" class="form-control" />
 			</p>
 			<div>
-				<input type="submit" value="Submit" class="btn btn-primary d-block mx-auto"/>
+				<input type="submit" value="Submit"
+					class="btn btn-primary d-block mx-auto" />
 			</div>
 		</form:form>
 	</div>
