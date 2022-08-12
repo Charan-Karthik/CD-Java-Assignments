@@ -13,6 +13,7 @@ public interface UserRepo extends CrudRepository<User, Long> {
 	
 	List<User> findAll();
 	
+	// for checking a user with that email is in the database or not
 	Optional<User> findByEmail(String email);
 	
 }

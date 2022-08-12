@@ -73,12 +73,6 @@
 				</form:form>
 			</div>
 		</div>
-
-		<!-- LOGIN -->
-		<!-- newLogin object will touch the model to validate only -->
-		<div class="login-reg-main border-round">
-			
-		</div>
 	</div>
 </body>
 </html>

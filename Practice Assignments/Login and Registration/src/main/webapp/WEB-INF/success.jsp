@@ -20,7 +20,7 @@
 </head>
 <body>
 	<div class="container">
-		<h1 style="color:purple">Welcome, <c:out value="${user.userName}"/>!</h1>
+		<h1 style="color:purple">Welcome, <c:out value="${userName}"/>!</h1>
 		<h6>This is your dashboard. Nothing to see here yet.</h6>
 		<a href="/">Log Out</a>
 	</div>

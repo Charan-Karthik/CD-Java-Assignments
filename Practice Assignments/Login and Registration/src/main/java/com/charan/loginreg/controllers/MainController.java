@@ -24,6 +24,7 @@ public class MainController {
 	@GetMapping("/")
 	public String mainPage(Model model, HttpSession session) {
 		
+		// clear session (done on main page instead of a "/delete" route; all log out buttons will redirect to main page)
 		session.invalidate();
 		
 		model.addAttribute("newUser", new User());
@@ -34,21 +35,18 @@ public class MainController {
 	
 	@GetMapping("/success")
 	public String success(HttpSession session, Model model) {
+		// check if there is a user in session
+		// we don't want this page to be accessible if there is no user in session
 		if(session.getAttribute("session_user_id") == null) {
 			return "redirect:/";
 		}
-		
 		Long userID = (Long) session.getAttribute("session_user_id");
-		
 		User user = userServ.findUser(userID);
 		
-		model.addAttribute("user", user);
+		// for security reasons we don't want to pass in the entire user object because the user object has the password
+		model.addAttribute("userName", user.getUserName());
 		
-		if(userID == null) {
-			return "redirect:/";
-		} else {
-			return "success.jsp";
-		}
+		return "success.jsp";
 	}
 	
 	@PostMapping("/register")
@@ -57,10 +55,11 @@ public class MainController {
 		User user = userServ.register(newUser, result);
 		
 		if(result.hasErrors()) {
+			// re-render login/reg page if any errors
 			model.addAttribute("newLogin", new LoginUser());
 			return "main.jsp";
 		} else {
-			session.setAttribute("session_user_id", user.getId());
+			session.setAttribute("session_user_id", user.getId()); // add user to session
 			return "redirect:/success";
 		}
 	}
@@ -74,7 +73,7 @@ public class MainController {
 			model.addAttribute("newUser", new User());
 			return "main.jsp";
 		} else {
-			session.setAttribute("session_user_id", user.getId());
+			session.setAttribute("session_user_id", user.getId()); // add user to session
 			return "redirect:/success";
 		}
 	}
