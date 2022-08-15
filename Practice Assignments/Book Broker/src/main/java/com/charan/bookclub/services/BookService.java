@@ -50,4 +50,10 @@ public class BookService {
 	public List<Book> booksBorrowed(User user){
 		return bookRepo.findByBorrowerId(user.getId());
 	}
+	
+	// Add book to borrowed list
+	public void addBorrowingUser(Book b, User u) {
+		b.setBorrower(u);
+		bookRepo.save(b);
+	}
 }

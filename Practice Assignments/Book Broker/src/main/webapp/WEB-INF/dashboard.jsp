@@ -49,7 +49,7 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${allBooks}" var="book">
+					<c:forEach items="${unborrowed}" var="book">
 						<tr>
 							<td><c:out value="${book.id}" /></td>
 							<td><a href="/book/${book.id}"><c:out
@@ -62,7 +62,7 @@
 											href="/book/${book.id}/delete">Delete</a>
 									</c:when>
 									<c:otherwise>
-										<a href="#">Borrow</a>
+										<a href="/bookmarket/borrow/${book.id}">Borrow</a>
 									</c:otherwise>
 								</c:choose></td>
 						</tr>
@@ -73,7 +73,12 @@
 
 		<div class="mt-4">
 			<c:choose>
-				<c:when test="${session_user_id != 1}">
+				<c:when test="${borrowed.size() < 1}">
+					<div>
+						<h4 class="text-center mt-4">
+							<em>You are currently not borrowing any books.</em>
+						</h4>
+					</div>
 				</c:when>
 				<c:otherwise>
 					<h5>Books I'm borrowing:</h5>
@@ -88,8 +93,15 @@
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-							</tr>
+							<c:forEach items="${borrowed}" var="b">
+								<tr>
+									<td><c:out value="${b.id}"/></td>
+									<td><a href="/book/${b.id}"><c:out value="${b.title}"/></a></td>
+									<td><c:out value="${b.author}"/></td>
+									<td><c:out value="${b.user.userName}"/></td>
+									<td><a href="/bookmarket/return/${b.id}">Return Book</a></td>
+								</tr>
+							</c:forEach>
 						</tbody>
 					</table>
 				</c:otherwise>
