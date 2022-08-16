@@ -76,6 +76,10 @@ public class BookController {
 
 		Book bookToUpdate = bookServ.findBook(id);
 		model.addAttribute("bookToUpdate", bookToUpdate);
+		
+// FOR TESTING PURPOSES
+//		User borrower = bookToUpdate.getBorrower();
+//		System.out.println(borrower);
 
 		return "editBook.jsp";
 	}
@@ -94,7 +98,11 @@ public class BookController {
 		} else {
 			Long userID = (Long) session.getAttribute("session_user_id");
 			User creator = userServ.findUser(userID);
-
+			
+			User borrower = book.getBorrower();
+//			System.out.println(borrower);
+			
+			book.setBorrower(borrower);
 			book.setUser(creator);
 			bookServ.updateBook(book);
 			return "redirect:/welcome";

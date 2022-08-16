@@ -27,6 +27,9 @@
 
 		<form:form action="/book/${bookToUpdate.id}/edit" method="post"
 			modelAttribute="bookToUpdate" class="w-50 mt-3">
+			
+			<form:input type="hidden" path="borrower"/>
+			
 			<div class="form-group mb-3">
 				<form:label path="title">Title:</form:label>
 				<form:input path="title" class="form-control" />

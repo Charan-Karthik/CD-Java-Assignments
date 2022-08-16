@@ -35,17 +35,13 @@ public class BrokerController {
 		User loggedInUser = userServ.findUser(userID);
 		String loggedInUserName = loggedInUser.getUserName();
 		model.addAttribute("userName", loggedInUserName);
-
-		List<Book> allBooks = bookServ.allBooks();
-		model.addAttribute("allBooks", allBooks);
 		
-		List<Book> borrowed = bookServ.booksBorrowed(loggedInUser);
-		model.addAttribute("borrowed", borrowed);
-
-		// don't really need this second list (it's just a copy of all books)
+		List<Book> userBorrowed = bookServ.booksBorrowed(loggedInUser);
+		model.addAttribute("borrowed", userBorrowed);
+		
 		// remove the book from the unborrowed list if it's borrowed
-		List<Book> unborrowed = allBooks;
-		for(Book b : borrowed) {
+		List<Book> unborrowed = bookServ.allBooks();
+		for(Book b : userBorrowed) {
 			unborrowed.remove(b);
 		}
 		model.addAttribute("unborrowed", unborrowed);
