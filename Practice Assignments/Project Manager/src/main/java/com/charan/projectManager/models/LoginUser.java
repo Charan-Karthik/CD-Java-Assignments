@@ -1,4 +1,4 @@
-package com.charan.projectManager.models;
+package com.charan.projectmanager.models;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;

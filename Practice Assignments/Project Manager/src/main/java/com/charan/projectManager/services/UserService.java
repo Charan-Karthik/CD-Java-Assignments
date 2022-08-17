@@ -1,4 +1,4 @@
-package com.charan.projectManager.services;
+package com.charan.projectmanager.services;
 
 import java.util.Optional;
 
@@ -7,9 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.BindingResult;
 
-import com.charan.projectManager.models.LoginUser;
-import com.charan.projectManager.models.User;
-import com.charan.projectManager.repos.UserRepo;
+import com.charan.projectmanager.models.LoginUser;
+import com.charan.projectmanager.models.Project;
+import com.charan.projectmanager.models.User;
+import com.charan.projectmanager.repos.UserRepo;
 
 @Service
 public class UserService {
@@ -75,5 +76,10 @@ public class UserService {
 			return user;
 		}
 	}
+	
+	// Update
+		public User updateUser(User u) {
+			return userRepo.save(u);
+		}
 
 }

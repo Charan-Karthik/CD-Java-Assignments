@@ -1,4 +1,4 @@
-package com.charan.projectManager;
+package com.charan.projectmanager;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

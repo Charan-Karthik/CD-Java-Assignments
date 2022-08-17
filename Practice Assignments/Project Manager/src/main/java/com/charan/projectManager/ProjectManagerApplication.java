@@ -1,4 +1,4 @@
-package com.charan.projectManager;
+package com.charan.projectmanager;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,12 +1,18 @@
-package com.charan.projectManager.models;
+package com.charan.projectmanager.models;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -42,6 +48,12 @@ public class User {
 	private String confirm;
 
 // 	RELATIONSHIPS
+	@OneToMany(mappedBy="user", fetch=FetchType.LAZY)
+	private List<Project> projects; // the projects that the user created (aka the projects that the user leads)
+	
+	@ManyToMany(fetch=FetchType.LAZY)
+	@JoinTable(name="users_projects", joinColumns = @JoinColumn(name="user_id"), inverseJoinColumns = @JoinColumn(name="project_id"))
+	private List<Project> allProjects;
 
 //	CREATED AT AND UPDATED AT
 	@Column(updatable = false)
@@ -127,5 +139,21 @@ public class User {
 
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public List<Project> getProjects() {
+		return projects;
+	}
+
+	public void setProjects(List<Project> projects) {
+		this.projects = projects;
+	}
+
+	public List<Project> getAllProjects() {
+		return allProjects;
+	}
+
+	public void setAllProjects(List<Project> allProjects) {
+		this.allProjects = allProjects;
 	}
 }

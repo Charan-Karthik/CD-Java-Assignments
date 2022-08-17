@@ -1,4 +1,4 @@
-package com.charan.projectManager.controllers;
+package com.charan.projectmanager.controllers;
 
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -11,15 +11,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.charan.projectManager.models.LoginUser;
-import com.charan.projectManager.models.User;
-import com.charan.projectManager.services.UserService;
+import com.charan.projectmanager.models.LoginUser;
+import com.charan.projectmanager.models.User;
+import com.charan.projectmanager.services.ProjectService;
+import com.charan.projectmanager.services.UserService;
 
 @Controller
 public class LoginRegController {
 
 	@Autowired
 	UserService userServ;
+	
+	@Autowired
+	ProjectService projectServ;
 
 	@GetMapping("/")
 	public String loginRegPage(Model model, HttpSession session) {
@@ -30,21 +34,6 @@ public class LoginRegController {
 		model.addAttribute("loginUser", new LoginUser());
 
 		return "loginReg.jsp";
-	}
-
-	@GetMapping("/dashboard")
-	public String welcomePage(HttpSession session, Model model) {
-		// we don't want this page to render if there is no user in session
-		if (session.getAttribute("session_user_id") == null) {
-			return "redirect:/";
-		}
-		
-		Long userID = (Long) session.getAttribute("session_user_id");
-		User user = userServ.findUser(userID);
-		
-		model.addAttribute("user", user);
-		
-		return "dashboard.jsp";
 	}
 
 	@PostMapping("/register")
